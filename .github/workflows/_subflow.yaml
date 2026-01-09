@@ -19,7 +19,7 @@ jobs:
           echo "ref: $HEAD_REF"
           echo "repo: $REPO"
         env:
-          CURRENT_BRANCH: ""
-          TARGET_BRANCH: ""
+          PARENT_REF: ${{ inputs.parent-ref }}
+          PARENT_REPO: ${{ inputs.parent-repo }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
           REPO: ${{ github.event.pull_request.head.repo.full_name }}
