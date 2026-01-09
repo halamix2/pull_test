@@ -17,11 +17,14 @@ jobs:
       - run: |
           echo "hello from target release!"
           echo "parent ref: ${PARENT_REF}"
-          echo "parent repo: $PARENT_REPO"
+          echo "target ref: $TARGET_REF"
+          echo "github ref: $GH_REF"
           echo "ref: $HEAD_REF"
           echo "repo: $REPO"
         env:
           PARENT_REF: ${{ inputs.parent-ref }}
           PARENT_REPO: ${{ inputs.parent-repo }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          TARGET_REF: ${{ github.event.pull_request.base.ref }}
+          GH_REF: ${{ github.ref }}
           REPO: ${{ github.event.pull_request.head.repo.full_name }}
