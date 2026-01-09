@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "hello from target main!"
+          echo "hello from target release!"
           echo "parent ref: ${PARENT_REF}"
           echo "parent repo: $PARENT_REPO"
           echo "ref: $HEAD_REF"
