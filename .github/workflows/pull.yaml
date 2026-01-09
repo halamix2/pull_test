@@ -1,0 +1,16 @@
+name: pull
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  id-token: write # This is required for requesting the JWT token
+  contents: read # This is required for actions/checkout
+
+jobs:
+  subflow:
+    uses: ./.github/workflows/_subflow.yaml
+    with:
+      parent-ref: ${{ github.event.pull_request.head.ref }}
+      parent-repo: ${{ github.event.pull_request.head.repo.full_name }}

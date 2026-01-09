@@ -1,0 +1,25 @@
+name: unit tests
+
+on:
+  workflow_call:
+    inputs:
+      parent-ref:
+        type: string
+      parent-repo:
+        type: string
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "hello from target main!"
+          echo "current branch: $CURRENT_BRANCH"
+          echo "target branch: $TARGET_BRANCH"
+          echo "ref: $HEAD_REF"
+          echo "repo: $REPO"
+        env:
+          CURRENT_BRANCH: ""
+          TARGET_BRANCH: ""
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          REPO: ${{ github.event.pull_request.head.repo.full_name }}
