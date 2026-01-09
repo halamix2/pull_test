@@ -5,8 +5,10 @@ on:
     inputs:
       parent-ref:
         type: string
+        required: true
       parent-repo:
         type: string
+        required: true
 
 jobs:
   info:
@@ -14,8 +16,8 @@ jobs:
     steps:
       - run: |
           echo "hello from target main!"
-          echo "current branch: $CURRENT_BRANCH"
-          echo "target branch: $TARGET_BRANCH"
+          echo "parent ref: ${PARENT_REF}"
+          echo "parent repo: $PARENT_REPO"
           echo "ref: $HEAD_REF"
           echo "repo: $REPO"
         env:
